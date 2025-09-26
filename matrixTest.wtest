@@ -1,9 +1,30 @@
+import matrix.*
 
-
-describe "group of tests " {
-
-  test "test 01" {
-    assert.equals(100, 50+50)
+describe "Testeos de la nave" {
+  method initialize() {
+    neo.subirALaNave()
+    morfeo.subirALaNave()
+    trinity.subirALaNave()
   }
-
+  test "¿Cuántos pasajeros hay?" {
+    assert.equals(3, nave.cantidadDePasajeros())
+  }
+  test "Pasajero con mayor vitalidad" {
+    assert.equals(neo, nave.pasajeroConMayorVitalidad())
+  }
+  test "Está equilibrada" {
+    assert.notThat(nave.estáEquilibradaEnVitalidad())
+  }
+  test "Está el elegido" {
+    assert.that(nave.elElegidoEstáEnLaNave())
+  }
+  test "Chocar" {
+    nave.chocar()
+    assert.that(nave.pasajeros().isEmpty())
+  }
+  test "Acelerar" {
+    nave.acelerar()
+    assert.equals(7, morfeo.vitalidad())
+    assert.equals(0, trinity.vitalidad())
+  }
 }
